@@ -100,9 +100,9 @@ const OrbitingSkills = () => {
       
       {/* Label */}
       <div
-        className="absolute text-sm font-medium text-gray-700 dark:text-gray-300"
+        className="absolute text-xs font-medium text-gray-700 dark:text-gray-300"
         style={{
-          top: `calc(50% - ${radius + 25}px)`,
+          top: `calc(50% - ${radius + 20}px)`,
           left: '50%',
           transform: 'translateX(-50%)',
         }}
@@ -143,7 +143,7 @@ const OrbitingSkills = () => {
               whileHover={{ scale: 1.2 }}
             >
               <div 
-                className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 ${
                   tech.customStyle 
                     ? 'bg-gray-800 dark:bg-white' 
                     : 'bg-white dark:bg-gray-800'
@@ -155,7 +155,7 @@ const OrbitingSkills = () => {
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  className={`w-6 h-6 ${tech.customStyle ? 'invert dark:invert-0' : ''}`}
+                  className={`w-5 h-5 ${tech.customStyle ? 'invert dark:invert-0' : ''}`}
                   style={tech.scale ? { transform: `scale(${tech.scale})` } : undefined}
                   title={tech.name}
                 />
@@ -168,15 +168,15 @@ const OrbitingSkills = () => {
   );
 
   return (
-    <div className="relative w-[500px] h-[500px] mx-auto">
+    <div className="relative w-[400px] h-[400px] mx-auto">
       {/* Inner Circle - Frontend */}
-      {createOrbitingCircle(technologies.frontend, 100, 20, 0, 'Frontend')}
+      {createOrbitingCircle(technologies.frontend, 70, 20, 0, 'Frontend')}
       
       {/* Middle Circle - Backend */}
-      {createOrbitingCircle(technologies.backend, 180, 25, 0.5, 'Backend')}
+      {createOrbitingCircle(technologies.backend, 130, 25, 0.5, 'Backend')}
       
       {/* Outer Circle - Tools */}
-      {createOrbitingCircle(technologies.tools, 260, 30, 1, 'Tools')}
+      {createOrbitingCircle(technologies.tools, 190, 30, 1, 'Tools')}
     </div>
   );
 };
