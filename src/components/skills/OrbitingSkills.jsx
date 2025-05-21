@@ -39,7 +39,9 @@ const OrbitingSkills = () => {
       { 
         name: 'Express', 
         icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg',
-        color: '#000000'
+        color: '#ffffff',
+        darkColor: '#ffffff',
+        customStyle: true
       },
       { 
         name: 'MongoDB', 
@@ -65,8 +67,20 @@ const OrbitingSkills = () => {
       },
       { 
         name: 'AWS', 
-        icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg',
-        color: '#FF9900'
+        icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
+        color: '#FF9900',
+        customStyle: true,
+        scale: 1.5
+      },
+      {
+        name: 'GitLab',
+        icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/gitlab/gitlab-original.svg',
+        color: '#FC6D26'
+      },
+      {
+        name: 'Netlify',
+        icon: 'https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg',
+        color: '#00C7B7'
       }
     ]
   };
@@ -129,15 +143,20 @@ const OrbitingSkills = () => {
               whileHover={{ scale: 1.2 }}
             >
               <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 hover:scale-110 transition-transform"
+                className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 ${
+                  tech.customStyle 
+                    ? 'bg-gray-800 dark:bg-white' 
+                    : 'bg-white dark:bg-gray-800'
+                } hover:scale-110 transition-transform overflow-hidden`}
                 style={{ 
-                  border: `2px solid ${tech.color}`,
+                  border: `2px solid ${tech.darkColor || tech.color}`,
                 }}
               >
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  className="w-6 h-6"
+                  className={`w-6 h-6 ${tech.customStyle ? 'invert dark:invert-0' : ''}`}
+                  style={tech.scale ? { transform: `scale(${tech.scale})` } : undefined}
                   title={tech.name}
                 />
               </div>
