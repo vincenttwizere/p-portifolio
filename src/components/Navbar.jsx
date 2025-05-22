@@ -3,6 +3,8 @@ import { useTheme } from '../context/ThemeContext';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import profileImg from '../assets/profile.jpg';
+// Import CV directly
+import CV from '../assets/Vincent TWIZERE Curricuum vitae.pdf';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +23,14 @@ const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Download CV', href: '/path-to-your-cv.pdf', download: true },
+    { 
+      name: 'Download CV', 
+      href: CV,  // Use the imported CV directly
+      isButton: true,
+      download: true,
+      target: '_blank',
+      rel: 'noopener noreferrer'
+    },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -59,8 +68,12 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 download={link.download}
-                className="text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors tracking-wide uppercase"
-                whileHover={{ y: -2 }}
+                target={link.target}
+                rel={link.rel}
+                className={`text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors tracking-wide uppercase ${
+                  link.isButton ? 'px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark' : ''
+                }`}
+                whileHover={{ y: link.isButton ? 0 : -2 }}
               >
                 {link.name}
               </motion.a>
@@ -105,15 +118,22 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 download={link.download}
-                className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 tracking-wide uppercase"
+                target={link.target}
+                rel={link.rel}
                 onClick={() => setIsOpen(false)}
+                className={`block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 tracking-wide uppercase ${
+                  link.isButton ? 'bg-primary text-white hover:bg-primary-dark' : ''
+                }`}
                 whileHover={{ x: 10 }}
               >
                 {link.name}
               </motion.a>
             ))}
             <motion.button
-              onClick={toggleTheme}
+              onClick={() => {
+                toggleTheme();
+                setIsOpen(false);
+              }}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 tracking-wide uppercase"
               whileHover={{ x: 10 }}
             >
