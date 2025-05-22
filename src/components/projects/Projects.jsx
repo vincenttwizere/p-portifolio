@@ -6,7 +6,7 @@ import { useState } from 'react';
 const projects = [
   {
     title: 'E-commerce Platform',
-    description: 'A full-stack e-commerce platform with user authentication, product management, and payment integration. Built with modern best practices and scalable architecture.',
+    description: 'A full-stack e-commerce platform with user authentication, product management, and payment integration.',
     image: '/images/ecommerce.jpg',
     tags: ['React', 'Node.js', 'MongoDB', 'Express'],
     github: 'https://github.com/yourusername/ecommerce',
@@ -15,12 +15,12 @@ const projects = [
       'User authentication & authorization',
       'Product catalog with search & filters',
       'Shopping cart & checkout process',
-      'Payment integration with Stripe'
+      'Payment integration'
     ]
   },
   {
     title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates and team features. Designed for modern remote teams.',
+    description: 'A collaborative task management application with real-time updates and team features.',
     image: '/images/taskmanager.jpg',
     tags: ['React', 'Firebase', 'Tailwind CSS'],
     github: 'https://github.com/yourusername/taskmanager',
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     title: 'Portfolio Website',
-    description: 'A modern portfolio website showcasing projects and skills with smooth animations and interactive elements.',
+    description: 'A modern portfolio website showcasing projects and skills with smooth animations.',
     image: '/images/portfolio.jpg',
     tags: ['React', 'Tailwind CSS', 'Framer Motion'],
     github: 'https://github.com/yourusername/portfolio',
