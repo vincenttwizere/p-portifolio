@@ -25,8 +25,7 @@ const Navbar = () => {
     { name: 'Projects', href: '#projects' },
     { 
       name: 'Download CV', 
-      href: CV,  // Use the imported CV directly
-      isButton: true,
+      href: CV,
       download: true,
       target: '_blank',
       rel: 'noopener noreferrer'
@@ -70,10 +69,8 @@ const Navbar = () => {
                 download={link.download}
                 target={link.target}
                 rel={link.rel}
-                className={`text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors tracking-wide uppercase ${
-                  link.isButton ? 'px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark' : ''
-                }`}
-                whileHover={{ y: link.isButton ? 0 : -2 }}
+                className="text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors tracking-wide uppercase"
+                whileHover={{ y: -2 }}
               >
                 {link.name}
               </motion.a>
@@ -121,9 +118,7 @@ const Navbar = () => {
                 target={link.target}
                 rel={link.rel}
                 onClick={() => setIsOpen(false)}
-                className={`block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 tracking-wide uppercase ${
-                  link.isButton ? 'bg-primary text-white hover:bg-primary-dark' : ''
-                }`}
+                className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 tracking-wide uppercase"
                 whileHover={{ x: 10 }}
               >
                 {link.name}
