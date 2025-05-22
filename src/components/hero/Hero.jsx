@@ -84,7 +84,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-sm text-gray-600 dark:text-gray-400 max-w-lg font-light leading-relaxed"
             >
-              I build beautiful and functional web applications with modern technologies.
+              I build beautiful and functional web applications with modern technologies.<br></br>
               Passionate about creating exceptional user experiences.
             </motion.p>
             
