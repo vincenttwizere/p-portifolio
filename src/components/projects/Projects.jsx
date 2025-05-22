@@ -189,8 +189,8 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-16 scroll-mt-20">
-      <div className="container mx-auto px-4">
+    <section className="w-screen bg-gray-50 dark:bg-gray-900 py-16">
+      <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +205,7 @@ const Projects = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-16">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} />
           ))}
