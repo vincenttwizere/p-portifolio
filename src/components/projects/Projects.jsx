@@ -101,16 +101,6 @@ const ProjectCard = ({ project }) => {
                 )}
               </div>
             </div>
-            
-            <div className="absolute top-3 right-3">
-              <motion.button
-                className="text-white bg-primary/80 backdrop-blur-sm p-1.5 rounded-full text-xs"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                Flip
-              </motion.button>
-            </div>
           </div>
         </div>
 
@@ -189,7 +179,7 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   return (
-    <section className="w-screen bg-gray-50 dark:bg-gray-900 py-16">
+    <section id="projects" className="w-screen bg-gray-50 dark:bg-gray-900 py-16">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
