@@ -19,10 +19,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
+    { name: 'Download CV', href: '/path-to-your-cv.pdf', download: true },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -59,6 +58,7 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
+                download={link.download}
                 className="text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors tracking-wide uppercase"
                 whileHover={{ y: -2 }}
               >
@@ -104,6 +104,7 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
+                download={link.download}
                 className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 tracking-wide uppercase"
                 onClick={() => setIsOpen(false)}
                 whileHover={{ x: 10 }}
