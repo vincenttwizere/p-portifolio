@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 import { GithubIcon, ExternalLinkIcon } from '../../assets/icons';
 import { useState } from 'react';
@@ -179,6 +179,22 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   const { isDarkMode } = useTheme();
+  const [currentPage, setCurrentPage] = useState(0);
+  const projectsPerPage = 3;
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const currentProjects = projects.slice(
+    currentPage * projectsPerPage,
+    (currentPage + 1) * projectsPerPage
+  );
 
   return (
     <section id="projects" className="w-screen bg-gray-50 dark:bg-gray-900 py-12 md:py-16 lg:py-20 scroll-mt-16 md:scroll-mt-20">
@@ -198,10 +214,29 @@ const Projects = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mx-4 md:mx-8 lg:mx-16">
-          {projects.map((project, index) => (
+          {currentProjects.map((project, index) => (
             <ProjectCard key={project.title} project={project} />
           ))}
         </div>
+
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-8 mt-8">
+            <button
+              onClick={prevPage}
+              className={`text-3xl ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
+              aria-label="Previous projects"
+            >
+              &#8249;
+            </button>
+            <button
+              onClick={nextPage}
+              className={`text-3xl ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
+              aria-label="Next projects"
+            >
+              &#8250;
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
