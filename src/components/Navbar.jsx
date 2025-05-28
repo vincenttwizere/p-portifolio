@@ -68,7 +68,7 @@ const Navbar = () => {
       e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
-        const offset = 80; // Height of navbar
+        const offset = window.innerWidth >= 768 ? 80 : 64; // Smaller offset on mobile
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = element.getBoundingClientRect().top;
         const elementPosition = elementRect - bodyRect;
@@ -94,7 +94,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 md:h-20">
           <motion.a
             href="#home"
             className="flex items-center gap-3 z-50"

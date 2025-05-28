@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const OrbitingTech = () => {
+  const [dimensions, setDimensions] = useState({
+    width: 280,
+    height: 280,
+    radius: 140
+  });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      const width = window.innerWidth;
+      if (width < 640) { // sm
+        setDimensions({
+          width: 180,
+          height: 180,
+          radius: 90
+        });
+      } else if (width < 768) { // md
+        setDimensions({
+          width: 220,
+          height: 220,
+          radius: 110
+        });
+      } else {
+        setDimensions({
+          width: 280,
+          height: 280,
+          radius: 140
+        });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   const technologies = [
     { 
       name: 'HTML', 
@@ -54,23 +89,23 @@ const OrbitingTech = () => {
     <div className="absolute inset-0">
       {/* Orbit Ring */}
       <div 
-        className="absolute inset-0 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-30"
+        className="absolute inset-0 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-30 transition-all duration-300"
         style={{
-          width: '280px',
-          height: '280px',
-          left: 'calc(50% - 140px)',
-          top: 'calc(50% - 140px)',
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          left: `calc(50% - ${dimensions.radius}px)`,
+          top: `calc(50% - ${dimensions.radius}px)`,
         }}
       />
       
       {/* Orbiting Icons */}
       <motion.div
-        className="absolute"
+        className="absolute transition-all duration-300"
         style={{
-          width: '280px',
-          height: '280px',
-          left: 'calc(50% - 140px)',
-          top: 'calc(50% - 140px)',
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`,
+          left: `calc(50% - ${dimensions.radius}px)`,
+          top: `calc(50% - ${dimensions.radius}px)`,
         }}
         animate={{
           rotate: 360
@@ -90,11 +125,11 @@ const OrbitingTech = () => {
                 position: 'absolute',
                 left: '50%',
                 top: '50%',
-                transform: `rotate(${angle}deg) translateX(140px) rotate(-${angle}deg)`,
+                transform: `rotate(${angle}deg) translateX(${dimensions.radius}px) rotate(-${angle}deg)`,
               }}
             >
               <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform"
+                className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform"
                 style={{ 
                   backgroundColor: 'white',
                   border: `2px solid ${tech.color}`,
@@ -103,7 +138,7 @@ const OrbitingTech = () => {
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                 />
               </div>
             </div>

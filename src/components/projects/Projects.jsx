@@ -179,13 +179,13 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="w-screen bg-gray-50 dark:bg-gray-900 py-16">
-      <div className="container mx-auto">
+    <section id="projects" className="w-screen bg-gray-50 dark:bg-gray-900 py-12 md:py-16 lg:py-20 scroll-mt-16 md:scroll-mt-20">
+      <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-10 lg:mb-12"
         >
           <span className="text-sm font-medium text-primary tracking-widest uppercase">
             My Work
@@ -195,7 +195,7 @@ const Projects = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mx-4 md:mx-8 lg:mx-16">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} />
           ))}

@@ -1,7 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const OrbitingSkills = () => {
+  const [dimensions, setDimensions] = useState({
+    width: 400,
+    height: 400,
+    innerRadius: 70,
+    middleRadius: 130,
+    outerRadius: 190
+  });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      const width = window.innerWidth;
+      if (width < 640) { // sm
+        setDimensions({
+          width: 260,
+          height: 260,
+          innerRadius: 45,
+          middleRadius: 85,
+          outerRadius: 120
+        });
+      } else if (width < 768) { // md
+        setDimensions({
+          width: 300,
+          height: 300,
+          innerRadius: 55,
+          middleRadius: 100,
+          outerRadius: 140
+        });
+      } else {
+        setDimensions({
+          width: 400,
+          height: 400,
+          innerRadius: 70,
+          middleRadius: 130,
+          outerRadius: 190
+        });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   const technologies = {
     frontend: [
       { 
@@ -143,7 +186,7 @@ const OrbitingSkills = () => {
               whileHover={{ scale: 1.2 }}
             >
               <div 
-                className={`w-8 h-8 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 ${
+                className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2 ${
                   tech.customStyle 
                     ? 'bg-gray-800 dark:bg-white' 
                     : 'bg-white dark:bg-gray-800'
@@ -155,7 +198,7 @@ const OrbitingSkills = () => {
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  className={`w-5 h-5 ${tech.customStyle ? 'invert dark:invert-0' : ''}`}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 ${tech.customStyle ? 'invert dark:invert-0' : ''}`}
                   style={tech.scale ? { transform: `scale(${tech.scale})` } : undefined}
                   title={tech.name}
                 />
@@ -168,15 +211,21 @@ const OrbitingSkills = () => {
   );
 
   return (
-    <div className="relative w-[400px] h-[400px] mx-auto">
+    <div 
+      className="relative mx-auto transition-all duration-300"
+      style={{ 
+        width: `${dimensions.width}px`, 
+        height: `${dimensions.height}px` 
+      }}
+    >
       {/* Inner Circle - Frontend */}
-      {createOrbitingCircle(technologies.frontend, 70, 20, 0, 'Frontend')}
+      {createOrbitingCircle(technologies.frontend, dimensions.innerRadius, 20, 0, 'Frontend')}
       
       {/* Middle Circle - Backend */}
-      {createOrbitingCircle(technologies.backend, 130, 25, 0.5, 'Backend')}
+      {createOrbitingCircle(technologies.backend, dimensions.middleRadius, 25, 0.5, 'Backend')}
       
       {/* Outer Circle - Tools */}
-      {createOrbitingCircle(technologies.tools, 190, 30, 1, 'Tools')}
+      {createOrbitingCircle(technologies.tools, dimensions.outerRadius, 30, 1, 'Tools')}
     </div>
   );
 };

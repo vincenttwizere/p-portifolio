@@ -62,13 +62,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 scroll-mt-20">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-8 md:py-12 lg:py-16 scroll-mt-16 md:scroll-mt-20">
+      <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-6 md:mb-8 lg:mb-10"
         >
           <span className="text-sm font-medium text-primary tracking-widest uppercase">
             Get In Touch
@@ -106,7 +106,7 @@ const Contact = () => {
                       }}
                     >
                       {method.icon}
-            </div>
+                    </div>
 
                     <div className="flex-grow">
                       <p className="text-sm font-medium">{method.title}</p>
@@ -115,7 +115,7 @@ const Contact = () => {
                       }`}>
                         {method.value}
                       </p>
-            </div>
+                    </div>
 
                     <motion.svg
                       className={`w-5 h-5 ${
@@ -129,7 +129,7 @@ const Contact = () => {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </motion.svg>
-              </div>
+                  </div>
 
                   <div 
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -139,15 +139,15 @@ const Contact = () => {
                   />
                 </motion.div>
               ))}
-                </div>
+            </div>
           </motion.div>
-                </div>
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className={`text-center mt-6 text-sm ${
+          className={`text-center mt-4 md:mt-6 text-sm ${
             isDarkMode ? 'text-gray-400' : 'text-gray-600'
           }`}
         >
