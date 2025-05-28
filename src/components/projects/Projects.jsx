@@ -45,6 +45,90 @@ const projects = [
       'Interactive animations',
       'Performance optimized'
     ]
+  },
+  {
+    title: 'AI Chat Assistant',
+    description: 'An intelligent chatbot powered by machine learning that provides customer support and information.',
+    image: '/images/chatbot.jpg',
+    tags: ['Python', 'TensorFlow', 'FastAPI', 'React'],
+    github: 'https://github.com/yourusername/ai-chat',
+    demo: 'https://ai-chat-demo.com',
+    features: [
+      'Natural language processing',
+      'Context-aware responses',
+      'Multi-language support',
+      'Integration with knowledge base'
+    ]
+  },
+  {
+    title: 'Social Media Dashboard',
+    description: 'A comprehensive analytics dashboard for social media management and performance tracking.',
+    image: '/images/dashboard.jpg',
+    tags: ['Vue.js', 'D3.js', 'Node.js', 'PostgreSQL'],
+    github: 'https://github.com/yourusername/social-dashboard',
+    demo: 'https://social-dashboard-demo.com',
+    features: [
+      'Real-time analytics',
+      'Custom data visualization',
+      'Multi-platform integration',
+      'Automated reporting'
+    ]
+  },
+  {
+    title: 'Weather Forecast App',
+    description: 'A beautiful weather application with detailed forecasts, maps, and severe weather alerts.',
+    image: '/images/weather.jpg',
+    tags: ['React Native', 'Redux', 'Weather API'],
+    github: 'https://github.com/yourusername/weather-app',
+    demo: 'https://weather-app-demo.com',
+    features: [
+      'Location-based forecasts',
+      'Interactive weather maps',
+      'Severe weather alerts',
+      'Hourly and daily predictions'
+    ]
+  },
+  {
+    title: 'Music Streaming App',
+    description: 'A modern music streaming platform with personalized playlists and social features.',
+    image: '/images/music.jpg',
+    tags: ['Next.js', 'WebAudio API', 'Supabase', 'Stripe'],
+    github: 'https://github.com/yourusername/music-stream',
+    demo: 'https://music-stream-demo.com',
+    features: [
+      'Real-time audio streaming',
+      'Playlist management',
+      'Social sharing features',
+      'Premium subscription system'
+    ]
+  },
+  {
+    title: 'Fitness Tracker',
+    description: 'A comprehensive fitness tracking application with workout plans and progress monitoring.',
+    image: '/images/fitness.jpg',
+    tags: ['Flutter', 'Firebase', 'Google Fit API'],
+    github: 'https://github.com/yourusername/fitness-tracker',
+    demo: 'https://fitness-tracker-demo.com',
+    features: [
+      'Custom workout plans',
+      'Progress visualization',
+      'Health metrics tracking',
+      'Community challenges'
+    ]
+  },
+  {
+    title: 'Recipe Sharing Platform',
+    description: 'A community-driven recipe sharing platform with meal planning and nutritional information.',
+    image: '/images/recipe.jpg',
+    tags: ['Angular', 'NestJS', 'PostgreSQL'],
+    github: 'https://github.com/yourusername/recipe-share',
+    demo: 'https://recipe-share-demo.com',
+    features: [
+      'Recipe management',
+      'Meal planning calendar',
+      'Nutritional analysis',
+      'Shopping list generation'
+    ]
   }
 ];
 
