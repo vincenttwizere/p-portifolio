@@ -178,6 +178,19 @@ const ProjectCard = ({ project }) => {
 };
 
 const Projects = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const { isDarkMode } = useTheme();
+
+  const filteredProjects = projects.filter(project => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      project.title.toLowerCase().includes(searchLower) ||
+      project.description.toLowerCase().includes(searchLower) ||
+      project.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
+      project.features.some(feature => feature.toLowerCase().includes(searchLower))
+    );
+  });
+
   return (
     <section id="projects" className="w-screen bg-gray-50 dark:bg-gray-900 py-12 md:py-16 lg:py-20 scroll-mt-16 md:scroll-mt-20">
       <div className="container px-4 mx-auto">
@@ -193,12 +206,57 @@ const Projects = () => {
           <h2 className="text-3xl font-bold mt-2">
             Featured Projects
           </h2>
+          
+          {/* Search Bar */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-md mx-auto mt-6"
+          >
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search projects by name, technology, or feature..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={`w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+                  isDarkMode 
+                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400'
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500'
+                }`}
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className={`absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700`}
+                >
+                  <span className="sr-only">Clear search</span>
+                  <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
+          </motion.div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mx-4 md:mx-8 lg:mx-16">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} />
+            ))
+          ) : (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="col-span-full text-center py-8"
+            >
+              <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                No projects found matching your search criteria.
+              </p>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
