@@ -304,17 +304,25 @@ const Projects = () => {
         </div>
 
         {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-8 mt-8">
+          <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={prevPage}
-              className={`text-3xl ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
+              className={`w-8 h-8 flex items-center justify-center rounded-full text-lg ${
+                isDarkMode 
+                  ? 'bg-gray-800 text-gray-400 hover:text-white' 
+                  : 'bg-gray-100 text-gray-600 hover:text-gray-900'
+              }`}
               aria-label="Previous projects"
             >
               &#8249;
             </button>
             <button
               onClick={nextPage}
-              className={`text-3xl ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
+              className={`w-8 h-8 flex items-center justify-center rounded-full text-lg ${
+                isDarkMode 
+                  ? 'bg-gray-800 text-gray-400 hover:text-white' 
+                  : 'bg-gray-100 text-gray-600 hover:text-gray-900'
+              }`}
               aria-label="Next projects"
             >
               &#8250;
