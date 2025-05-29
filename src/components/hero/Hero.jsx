@@ -30,7 +30,7 @@ const Hero = () => {
   }, [currentRoleIndex]);
 
   return (
-    <section id="home" className="relative min-h-[calc(100vh-6rem)] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-6 pb-4 md:py-12 lg:py-16">
+    <section id="home" className="relative min-h-[calc(100vh-6rem)] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-6 pb-4 md:py-12 lg:py-16 w-full">
       {/* 3D Background */}
       <div className="absolute inset-0 opacity-50">
         <Canvas camera={{ position: [0, 0, 1] }}>
@@ -39,8 +39,8 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 px-4 mx-auto md:ml-32 lg:ml-40 -mt-8 md:mt-0">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="w-full relative z-10 px-4 mx-auto">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
