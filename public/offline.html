@@ -3,53 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline - Offline App</title>
+    <title>Offline - Vincent TWIZERE Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'Roboto', system-ui, -apple-system, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f3f4f6;
+            background-color: #f8fafc;
+            color: #1e293b;
         }
         .container {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
             max-width: 90%;
-            width: 400px;
+            width: 450px;
         }
         h1 {
-            color: #374151;
+            color: #0f172a;
             margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.875rem;
         }
         p {
-            color: #6b7280;
+            color: #475569;
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
         .retry-button {
             background-color: #3b82f6;
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.375rem;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
             text-decoration: none;
             display: inline-block;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
         }
         .retry-button:hover {
             background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+        .icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.5rem;
+            color: #3b82f6;
+        }
+        .status {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>You're Offline</h1>
-        <p>It seems you've lost your internet connection. Don't worry - your data is safely stored and will sync when you're back online.</p>
-        <a href="/" class="retry-button">Try Again</a>
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+        <div class="status">Currently Offline</div>
+        <h1>No Internet Connection</h1>
+        <p>Don't worry! You can still access the cached version of my portfolio. Some content and images might not be available until you're back online.</p>
+        <button onclick="window.location.reload()" class="retry-button">
+            Try Again
+        </button>
     </div>
+    <script>
+        // Check connection status periodically
+        setInterval(() => {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }, 5000);
+    </script>
 </body>
 </html> 
