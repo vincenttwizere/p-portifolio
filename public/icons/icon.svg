@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="512" height="512" rx="128" fill="#3B82F6"/>
+    
+    <!-- Text Shadow for depth -->
+    <text x="256" y="300" 
+          font-family="Roboto, sans-serif" 
+          font-size="200" 
+          font-weight="700" 
+          text-anchor="middle" 
+          fill="#2563EB">VT</text>
+    
+    <!-- Main Text -->
+    <text x="256" y="290" 
+          font-family="Roboto, sans-serif" 
+          font-size="200" 
+          font-weight="700" 
+          text-anchor="middle" 
+          fill="white">VT</text>
+</svg> 
