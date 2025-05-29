@@ -30,7 +30,7 @@ const Hero = () => {
   }, [currentRoleIndex]);
 
   return (
-    <section id="home" className="relative min-h-[100dvh] flex items-start md:items-center justify-center overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section id="home" className="relative min-h-[calc(100vh-6rem)] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-6 pb-4 md:py-12 lg:py-16">
       {/* 3D Background */}
       <div className="absolute inset-0 opacity-50">
         <Canvas camera={{ position: [0, 0, 1] }}>
@@ -39,20 +39,20 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 px-4 pt-24 md:pt-0 pb-16 md:pb-0 mx-auto md:ml-32 lg:ml-40">
+      <div className="container relative z-10 px-4 mx-auto md:ml-32 lg:ml-40 -mt-8 md:mt-0">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-left space-y-6"
+            className="text-center md:text-left space-y-6"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="inline-block"
+              className="inline-block w-full md:w-auto"
             >
               <span className="text-xs font-medium text-blue-600 dark:text-blue-400 tracking-widest uppercase">
                 Welcome to my world
@@ -72,7 +72,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-base md:text-lg text-gray-900 dark:text-white flex items-center gap-2 font-medium"
+              className="text-base md:text-lg text-gray-900 dark:text-white flex items-center gap-2 font-medium justify-center md:justify-start"
             >
               <span className="text-blue-600 dark:text-blue-400">{currentRoleText}</span>
               <span className="inline-block w-1 h-5 bg-blue-600 dark:bg-blue-400 animate-pulse" />
@@ -82,7 +82,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-sm text-gray-600 dark:text-gray-400 max-w-lg font-light leading-relaxed"
+              className="text-sm text-gray-600 dark:text-gray-400 max-w-lg font-light leading-relaxed mx-auto md:mx-0"
             >
               I build beautiful and functional web applications with modern technologies.<br></br>
               Passionate about creating exceptional user experiences.
@@ -94,8 +94,8 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 1 }}
               className="space-y-3"
             >
-              <span className="text-xs font-medium text-gray-900 dark:text-white tracking-widest uppercase">Find me on</span>
-              <div className="flex gap-4">
+              <span className="text-xs font-medium text-gray-900 dark:text-white tracking-widest uppercase block text-center md:text-left">Find me on</span>
+              <div className="flex gap-4 justify-center md:justify-start">
                 <motion.a
                   href="https://github.com/vincenttwizere"
                   target="_blank"
@@ -160,7 +160,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-2 md:bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <a
           href="#about"

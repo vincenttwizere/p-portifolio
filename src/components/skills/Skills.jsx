@@ -6,14 +6,14 @@ const Skills = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <section id="skills" className="section bg-gray-50 dark:bg-gray-900/50 py-12 md:py-16 lg:py-20 scroll-mt-16 md:scroll-mt-20">
+    <section id="skills" className="min-h-[calc(100vh-6rem)] md:min-h-screen bg-gray-50 dark:bg-gray-900/50 py-8 md:py-12 lg:py-16 scroll-mt-16 md:scroll-mt-20 flex items-center justify-center">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-6 md:mb-8 lg:mb-12"
+          className="text-center mb-4 md:mb-8 lg:mb-12"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex justify-center items-center mt-6 md:mt-8 lg:mt-12"
+          className="flex justify-center items-center mt-4 md:mt-8 lg:mt-12"
         >
           <OrbitingSkills />
         </motion.div>

@@ -87,11 +87,7 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg'
-          : 'bg-gradient-to-b from-black/50 to-transparent md:bg-transparent'
-      }`}
+      className="fixed w-full z-50 transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16 md:h-20">
@@ -106,14 +102,29 @@ const Navbar = () => {
               alt="Vincent"
               className="w-8 h-8 rounded-full object-cover border-2 border-primary"
             />
-            <span className={`text-lg font-medium tracking-wide ${
-              scrolled 
-                ? 'text-gray-900 dark:text-white'
-                : 'text-white drop-shadow-md'
-            }`}>
+            <span className="text-lg font-medium tracking-wide text-gray-900 dark:text-white">
               Vincent
             </span>
           </motion.a>
+
+          {/* Mobile Navigation Button */}
+          <motion.button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-lg z-50 menu-button bg-gray-100 dark:bg-gray-800"
+            whileTap={{ scale: 0.95 }}
+          >
+            <div className="w-6 h-6 flex flex-col justify-around">
+              <span className={`block w-full h-0.5 transition-all duration-300 bg-gray-700 dark:bg-gray-300 ${
+                isOpen ? 'rotate-45 translate-y-2.5' : ''
+              }`}></span>
+              <span className={`block w-full h-0.5 transition-all duration-300 bg-gray-700 dark:bg-gray-300 ${
+                isOpen ? 'opacity-0' : ''
+              }`}></span>
+              <span className={`block w-full h-0.5 transition-all duration-300 bg-gray-700 dark:bg-gray-300 ${
+                isOpen ? '-rotate-45 -translate-y-2.5' : ''
+              }`}></span>
+            </div>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -125,11 +136,7 @@ const Navbar = () => {
                 target={link.target}
                 rel={link.rel}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm tracking-wide uppercase transition-colors ${
-                  scrolled
-                    ? 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light'
-                    : 'text-white hover:text-primary-light drop-shadow-md'
-                } ${
+                className={`text-sm tracking-wide uppercase transition-colors text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light ${
                   activeSection === link.href.replace('#', '') && !link.download
                     ? 'text-primary dark:text-primary-light font-medium'
                     : ''
@@ -141,46 +148,17 @@ const Navbar = () => {
             ))}
             <motion.button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${
-                scrolled
-                  ? 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                  : 'bg-white/20 hover:bg-white/30 backdrop-blur-sm'
-              }`}
+              className="p-2 rounded-lg transition-colors bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               {isDarkMode ? (
                 <SunIcon className="h-5 w-5 text-yellow-500" />
               ) : (
-                <MoonIcon className="h-5 w-5 text-white" />
+                <MoonIcon className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               )}
             </motion.button>
           </div>
-
-          {/* Mobile Navigation Button */}
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg z-50 menu-button"
-            whileTap={{ scale: 0.95 }}
-          >
-            <div className="w-6 h-6 flex flex-col justify-around">
-              <span className={`block w-full h-0.5 transition-all duration-300 ${
-                scrolled 
-                  ? 'bg-gray-700 dark:bg-gray-300'
-                  : 'bg-white drop-shadow-md'
-              } ${isOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
-              <span className={`block w-full h-0.5 transition-all duration-300 ${
-                scrolled 
-                  ? 'bg-gray-700 dark:bg-gray-300'
-                  : 'bg-white drop-shadow-md'
-              } ${isOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`block w-full h-0.5 transition-all duration-300 ${
-                scrolled 
-                  ? 'bg-gray-700 dark:bg-gray-300'
-                  : 'bg-white drop-shadow-md'
-              } ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
-            </div>
-          </motion.button>
         </div>
 
         {/* Mobile Navigation Menu */}
@@ -191,8 +169,10 @@ const Navbar = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
                 className="fixed inset-0 bg-black/70 backdrop-blur-sm md:hidden"
                 style={{ zIndex: 40 }}
+                onClick={() => setIsOpen(false)}
               />
               <motion.div
                 initial={{ x: '100%' }}
@@ -226,10 +206,20 @@ const Navbar = () => {
                       toggleTheme();
                       setIsOpen(false);
                     }}
-                    className="w-full text-left py-3 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                    className="w-full flex items-center gap-3 py-3 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                     whileHover={{ x: 10 }}
                   >
-                    {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+                    {isDarkMode ? (
+                      <>
+                        <SunIcon className="h-5 w-5 text-yellow-500" />
+                        <span>Light Mode</span>
+                      </>
+                    ) : (
+                      <>
+                        <MoonIcon className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                        <span>Dark Mode</span>
+                      </>
+                    )}
                   </motion.button>
                 </div>
               </motion.div>
