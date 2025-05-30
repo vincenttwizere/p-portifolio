@@ -11,9 +11,9 @@ function App() {
   return (
     <Router>
       <ThemeProvider>
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
           <Navbar />
-          <main>
+          <main className="w-full">
             <Hero />
             {/* Commenting out About section
             <About />
