@@ -30,9 +30,9 @@ const Hero = () => {
   }, [currentRoleIndex]);
 
   return (
-    <section id="home" className="relative min-h-[calc(100vh-6rem)] md:min-h-screen w-screen overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-6 pb-4 md:py-12 lg:py-16 flex items-center justify-center">
+    <section id="home" className="relative min-h-[calc(100vh-6rem)] md:min-h-screen w-full overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-6 pb-4 md:py-12 lg:py-16 flex items-center justify-center">
       {/* 3D Background */}
-      <div className="absolute inset-0 w-screen opacity-50">
+      <div className="absolute inset-0 w-full opacity-50">
         <Canvas camera={{ position: [0, 0, 1] }} className="w-full h-full">
           <ParticleBackground />
         </Canvas>
