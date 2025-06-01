@@ -46,13 +46,13 @@ const Hero = () => {
       />
       
       <section id="home" className="relative min-h-[calc(100vh-4rem)]">
-        {/* Commented out particle background
+        Commented out particle background
         <div className="absolute inset-0">
           <Canvas camera={{ position: [0, 0, 1] }}>
             <ParticleBackground />
           </Canvas>
         </div>
-        */}
+       
 
         {/* Content */}
         <div className="relative z-10 h-full">
