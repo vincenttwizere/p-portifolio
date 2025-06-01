@@ -45,7 +45,7 @@ const Hero = () => {
         }}
       />
       
-      <section id="home" className="relative min-h-[calc(100vh-4rem)]">
+      <section id="home" className="relative min-h-screen flex items-center justify-center">
         Commented out particle background
         <div className="absolute inset-0">
           <Canvas camera={{ position: [0, 0, 1] }}>
@@ -55,9 +55,9 @@ const Hero = () => {
        
 
         {/* Content */}
-        <div className="relative z-10 h-full">
-          <div className="container mx-auto px-4 h-full flex items-center">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
+        <div className="relative z-10 w-full">
+          <div className="container mx-auto px-4 flex items-center justify-center min-h-screen">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full max-w-7xl">
               {/* Text Content */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
