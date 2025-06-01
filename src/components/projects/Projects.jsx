@@ -138,7 +138,7 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div
-      className="relative w-full h-[320px] cursor-pointer perspective"
+      className="relative w-full max-w-sm h-[320px] cursor-pointer perspective"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -173,13 +173,13 @@ const ProjectCard = ({ project }) => {
                 {project.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 text-xs rounded-full bg-white/20 backdrop-blur-sm"
+                    className="px-2 py-0.5 text-xs rounded-full bg-white/20 backdrop-blur-sm text-white"
                   >
                     {tag}
                   </span>
                 ))}
                 {project.tags.length > 3 && (
-                  <span className="px-2 py-0.5 text-xs rounded-full bg-white/20 backdrop-blur-sm">
+                  <span className="px-2 py-0.5 text-xs rounded-full bg-white/20 backdrop-blur-sm text-white">
                     +{project.tags.length - 3}
                   </span>
                 )}
@@ -194,65 +194,41 @@ const ProjectCard = ({ project }) => {
             isDarkMode ? 'bg-gray-800' : 'bg-white'
           }`}
         >
-          <div className="p-4 h-full flex flex-col">
-            <h3 className="text-xl font-bold mb-3 text-primary">{project.title}</h3>
+          <div className="p-6 h-full flex flex-col">
+            <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{project.title}</h3>
             
-            <div className="flex-grow">
-              <h4 className="text-sm font-semibold mb-2">Key Features:</h4>
-              <ul className="space-y-1 mb-4">
-                {project.features.slice(0, 3).map((feature, index) => (
-                  <li key={index} className="flex items-center gap-1.5">
-                    <span className="text-primary text-xs">•</span>
-                    <span className={`text-xs ${
-                      isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>
-                      {feature}
-                    </span>
+            <div className="flex-grow space-y-4">
+              <ul className="space-y-2">
+                {project.features.map((feature, index) => (
+                  <li key={index} className="flex items-start text-sm text-gray-600 dark:text-gray-400">
+                    <span className="mr-2">•</span>
+                    {feature}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="flex gap-2 justify-center">
-              <motion.a
+            <div className="flex justify-center gap-4 mt-4">
+              <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm ${
-                  isDarkMode 
-                    ? 'bg-gray-700 hover:bg-gray-600' 
-                    : 'bg-gray-100 hover:bg-gray-200'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-gray-900 dark:text-white"
+                onClick={(e) => e.stopPropagation()}
               >
-                <GithubIcon className="w-4 h-4" />
-                <span>GitHub</span>
-              </motion.a>
-              <motion.a
+                <GithubIcon className="w-5 h-5" />
+                <span>Code</span>
+              </a>
+              <a
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-primary hover:bg-primary-dark text-white text-sm"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+                onClick={(e) => e.stopPropagation()}
               >
-                <ExternalLinkIcon className="w-4 h-4" />
+                <ExternalLinkIcon className="w-5 h-5" />
                 <span>Demo</span>
-              </motion.a>
-            </div>
-            
-            <div className="absolute top-3 right-3">
-              <motion.button
-                className={`p-1.5 rounded-full text-xs ${
-                  isDarkMode ? 'bg-gray-700' : 'bg-gray-100'
-                }`}
-                onClick={() => setIsFlipped(false)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                Back
-              </motion.button>
+              </a>
             </div>
           </div>
         </div>
@@ -262,9 +238,8 @@ const ProjectCard = ({ project }) => {
 };
 
 const Projects = () => {
-  const { isDarkMode } = useTheme();
   const [currentPage, setCurrentPage] = useState(0);
-  const projectsPerPage = 3;
+  const projectsPerPage = 6;
   const totalPages = Math.ceil(projects.length / projectsPerPage);
 
   const nextPage = () => {
@@ -275,60 +250,69 @@ const Projects = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
-  const currentProjects = projects.slice(
-    currentPage * projectsPerPage,
-    (currentPage + 1) * projectsPerPage
-  );
-
   return (
-    <section id="projects" className="min-h-[calc(100vh-6rem)] md:min-h-screen bg-gray-50 dark:bg-gray-900 py-8 md:py-12 lg:py-16 scroll-mt-16 md:scroll-mt-20 flex items-center justify-center">
-      <div className="container px-4 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-4 sm:mb-6 md:mb-8"
-        >
-          <span className="text-sm font-medium text-primary tracking-widest uppercase">
+    <section id="projects" className="py-20 relative">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white"
+          >
             My Work
-          </span>
-          <h2 className="text-3xl font-bold mt-2">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-gray-600 dark:text-gray-400"
+          >
             Featured Projects
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mx-2 sm:mx-4 md:mx-6 lg:mx-8">
-          {currentProjects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
+          </motion.p>
         </div>
 
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-4 mt-6 sm:mt-8">
-            <button
-              onClick={prevPage}
-              className={`w-8 h-8 flex items-center justify-center rounded-full text-lg ${
-                isDarkMode 
-                  ? 'bg-gray-800 text-gray-400 hover:text-white' 
-                  : 'bg-gray-100 text-gray-600 hover:text-gray-900'
-              }`}
-              aria-label="Previous projects"
+        <div className="max-w-7xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
             >
-              &#8249;
-            </button>
-            <button
-              onClick={nextPage}
-              className={`w-8 h-8 flex items-center justify-center rounded-full text-lg ${
-                isDarkMode 
-                  ? 'bg-gray-800 text-gray-400 hover:text-white' 
-                  : 'bg-gray-100 text-gray-600 hover:text-gray-900'
-              }`}
-              aria-label="Next projects"
-            >
-              &#8250;
-            </button>
-          </div>
-        )}
+              {projects
+                .slice(
+                  currentPage * projectsPerPage,
+                  (currentPage + 1) * projectsPerPage
+                )
+                .map((project, index) => (
+                  <ProjectCard key={project.title} project={project} />
+                ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center items-center mt-12 gap-4">
+          <button
+            onClick={prevPage}
+            className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          >
+            Previous
+          </button>
+          <span className="text-gray-600 dark:text-gray-400">
+            {currentPage + 1} / {totalPages}
+          </span>
+          <button
+            onClick={nextPage}
+            className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </section>
   );

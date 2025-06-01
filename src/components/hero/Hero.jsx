@@ -33,14 +33,13 @@ const Hero = () => {
     <div className="relative w-full overflow-hidden">
       {/* Full-width background cover */}
       <div 
-        className="fixed inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
         style={{
           width: '100vw',
           height: '100vh',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
+          position: 'fixed',
+          top: 0,
+          left: 0,
           zIndex: 0
         }}
       />
