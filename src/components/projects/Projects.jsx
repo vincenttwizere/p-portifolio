@@ -138,7 +138,7 @@ const ProjectCard = ({ project }) => {
 
   return (
     <motion.div
-      className="relative w-full max-w-sm h-[320px] cursor-pointer perspective"
+      className="relative w-full max-w-[280px] h-[280px] cursor-pointer perspective"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -166,9 +166,9 @@ const ProjectCard = ({ project }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
             </div>
             
-            <div className="absolute bottom-0 w-full p-4">
-              <h3 className="text-xl font-bold mb-1 text-white">{project.title}</h3>
-              <p className="text-sm text-gray-200 mb-3 line-clamp-2">{project.description}</p>
+            <div className="absolute bottom-0 w-full p-3">
+              <h3 className="text-lg font-bold mb-1 text-white">{project.title}</h3>
+              <p className="text-xs text-gray-200 mb-2 line-clamp-2">{project.description}</p>
               <div className="flex flex-wrap gap-1">
                 {project.tags.slice(0, 3).map((tag) => (
                   <span
@@ -194,39 +194,39 @@ const ProjectCard = ({ project }) => {
             isDarkMode ? 'bg-gray-800' : 'bg-white'
           }`}
         >
-          <div className="p-6 h-full flex flex-col">
-            <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{project.title}</h3>
+          <div className="p-4 h-full flex flex-col">
+            <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">{project.title}</h3>
             
-            <div className="flex-grow space-y-4">
-              <ul className="space-y-2">
+            <div className="flex-grow space-y-3">
+              <ul className="space-y-1.5">
                 {project.features.map((feature, index) => (
-                  <li key={index} className="flex items-start text-sm text-gray-600 dark:text-gray-400">
-                    <span className="mr-2">•</span>
+                  <li key={index} className="flex items-start text-xs text-gray-600 dark:text-gray-400">
+                    <span className="mr-1.5">•</span>
                     {feature}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="flex justify-center gap-4 mt-4">
+            <div className="flex justify-center gap-3 mt-3">
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-gray-900 dark:text-white"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-gray-900 dark:text-white text-sm"
                 onClick={(e) => e.stopPropagation()}
               >
-                <GithubIcon className="w-5 h-5" />
+                <GithubIcon className="w-4 h-4" />
                 <span>Code</span>
               </a>
               <a
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors text-sm"
                 onClick={(e) => e.stopPropagation()}
               >
-                <ExternalLinkIcon className="w-5 h-5" />
+                <ExternalLinkIcon className="w-4 h-4" />
                 <span>Demo</span>
               </a>
             </div>
@@ -239,7 +239,7 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const projectsPerPage = 6;
+  const projectsPerPage = 3;
   const totalPages = Math.ceil(projects.length / projectsPerPage);
 
   const nextPage = () => {
@@ -273,45 +273,67 @@ const Projects = () => {
           </motion.p>
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentPage}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
-            >
-              {projects
-                .slice(
-                  currentPage * projectsPerPage,
-                  (currentPage + 1) * projectsPerPage
-                )
-                .map((project, index) => (
-                  <ProjectCard key={project.title} project={project} />
-                ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPage}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center"
+              >
+                {projects
+                  .slice(
+                    currentPage * projectsPerPage,
+                    (currentPage + 1) * projectsPerPage
+                  )
+                  .map((project, index) => (
+                    <ProjectCard key={project.title} project={project} />
+                  ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-        {/* Pagination */}
-        <div className="flex justify-center items-center mt-12 gap-4">
-          <button
-            onClick={prevPage}
-            className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-          >
-            Previous
-          </button>
-          <span className="text-gray-600 dark:text-gray-400">
-            {currentPage + 1} / {totalPages}
-          </span>
-          <button
-            onClick={nextPage}
-            className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-          >
-            Next
-          </button>
+          {/* Navigation Arrows */}
+          <div className="flex justify-center items-center mt-12 gap-8">
+            <motion.button
+              onClick={prevPage}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors shadow-md"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Previous projects"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-6 w-6 text-gray-700 dark:text-gray-300" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+
+            <motion.button
+              onClick={nextPage}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors shadow-md"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Next projects"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-6 w-6 text-gray-700 dark:text-gray-300" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>

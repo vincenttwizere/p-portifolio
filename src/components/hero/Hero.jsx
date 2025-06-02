@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center pl-0 md:pl-32 lg:pl-40">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 lg:gap-32 items-center pl-0 md:pl-32 lg:pl-40">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
