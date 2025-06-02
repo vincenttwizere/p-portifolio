@@ -30,21 +30,20 @@ const Hero = () => {
   }, [currentRoleIndex]);
 
   return (
-    <div className="relative w-screen overflow-x-hidden">
+    <div className="relative w-full">
       {/* Full-width background cover */}
-      <div className="absolute top-0 inset-x-0 w-full h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
+      <div className="fixed inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
       
-      <section id="home" className="relative min-h-screen flex items-center justify-center">
-        Commented out particle background
+      <section id="home" className="relative min-h-screen">
+        {/* Particle background */}
         <div className="absolute inset-0">
           <Canvas camera={{ position: [0, 0, 1] }}>
             <ParticleBackground />
           </Canvas>
         </div>
-       
 
         {/* Content */}
-        <div className="relative z-10 w-full">
+        <div className="relative z-10 min-h-screen">
           <div className="container mx-auto px-4 flex items-center justify-center min-h-screen">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full max-w-7xl">
               {/* Text Content */}
