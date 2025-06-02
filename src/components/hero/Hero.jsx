@@ -28,7 +28,7 @@ const Hero = () => {
   }, [currentRoleIndex]);
 
   return (
-    <section id="home" className="min-h-screen bg-gray-50 dark:bg-gray-900/50 flex items-center">
+    <section id="home" className="min-h-screen bg-white dark:bg-gray-900 flex items-center">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full max-w-7xl mx-auto">
           {/* Text Content */}
