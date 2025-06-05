@@ -42,7 +42,7 @@ A modern, responsive portfolio website built with React and Vite, featuring a be
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/p-portifolio.git
+   git clone https://github.com/vincenttwizere/p-portifolio.git
    ```
 
 2. Install dependencies:
