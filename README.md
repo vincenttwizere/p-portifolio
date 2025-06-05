@@ -91,5 +91,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 👤 Contact
 
 Vincent TWIZERE
-- GitHub: [@your-github-username](https://github.com/your-github-username)
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/your-profile)
+- GitHub: https://github.com/vincenttwizere
+- LinkedIn: www.linkedin.com/in/vincent-twizere-35595326a
