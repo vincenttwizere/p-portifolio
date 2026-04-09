@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-        <div className="grid md:grid-cols-2 gap-16 md:gap-24 lg:gap-32 items-center pl-0 md:pl-32 lg:pl-40">
+        <div className="grid md:grid-cols-2 gap-20 md:gap-28 lg:gap-36 items-center px-0 md:px-32 lg:px-40">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -124,6 +124,27 @@ const Hero = () => {
                 </motion.a>
               </div>
             </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex gap-4 justify-center md:justify-start"
+            >
+              <a
+                href="#projects"
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                View Projects
+              </a>
+              <a
+                href="/cv.pdf"
+                download
+                className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                Download CV
+              </a>
+            </motion.div>
           </motion.div>
 
           {/* Profile Image */}
@@ -131,7 +152,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="hidden md:block relative flex items-center justify-center min-h-[300px]"
+            className="hidden md:block relative flex items-center justify-center min-h-[300px] ml-4 mt-4"
           >
             <div className="relative w-[300px] h-[300px] flex items-center justify-center">
               <img
