@@ -6,7 +6,7 @@ const Skills = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <section id="skills" className="min-h-[calc(100vh-6rem)] md:min-h-screen bg-gray-50 dark:bg-gray-900/50 py-8 md:py-12 lg:py-16 scroll-mt-16 md:scroll-mt-20 flex items-center justify-center">
+    <section id="skills" className="min-h-[calc(100vh-6rem)] md:min-h-screen py-8 md:py-12 lg:py-16 scroll-mt-16 md:scroll-mt-20 flex items-center justify-center">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

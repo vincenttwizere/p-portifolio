@@ -102,7 +102,7 @@ const Navbar = () => {
               className="w-8 h-8 rounded-full object-cover border-2 border-primary"
             />
             <span className="text-lg font-medium tracking-wide text-gray-900 dark:text-white">
-              Vincent
+              vincenttwizere
             </span>
           </motion.a>
 
